@@ -82,9 +82,9 @@ const Navbar = () => {
             </div>
 
             {/* Settings Icon */}
-            <Link href="/settings">
+          
               <Settings className="cursor-pointer text-gray-500" size={24} />
-            </Link>
+            
           </div>
         </div>
       )}

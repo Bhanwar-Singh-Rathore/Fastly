@@ -16,7 +16,7 @@ function Page() {
   const [copySuccess, setCopySuccess] = useState(false);
 
   const copyToClipboard = () => {
-    const textToCopy = "git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY";
+    const textToCopy = "git clone https://github.com/Bhanwar-Singh-Rathore/fastly";
     navigator.clipboard.writeText(textToCopy).then(() => {
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 2000);
@@ -69,7 +69,7 @@ function Page() {
           </p>
           <div className="relative w-full md:w-auto">
             <p className="rounded-lg border h-12 md:w-[640px] border-gray-300 p-4 bg-gray-800 text-blue-500 text-center flex items-center justify-between">
-              <span>git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY</span>
+              <span>git clone https://github.com/Bhanwar-Singh-Rathore/fastly</span>
               <span
                 onClick={copyToClipboard}
                 className="cursor-pointer hover:text-white"

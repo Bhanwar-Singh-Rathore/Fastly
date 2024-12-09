@@ -13,8 +13,8 @@ import {
 // import { getAllUser } from "@/lib/queries"; 
 
 const CardUserSummary = () => {
- // Adjust type if needed
-
+  const [users, setUsers] = useState<[]>([]); // Adjust type if needed
+  const [, setIsLoading] = useState(true);
   const [timeframe, setTimeframe] = useState("weekly");
 
   useEffect(() => {

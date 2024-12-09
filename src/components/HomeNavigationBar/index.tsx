@@ -78,7 +78,7 @@ const Navigation = () => {
           </Link>
         ) : (
           <Link
-            href={`/user/sign-in`}
+            href={`/sign-in`}
             className="bg-blue-600 text-white p-2 px-6 rounded-lg hover:bg-primary/80"
           >
             Login

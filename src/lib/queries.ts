@@ -2,7 +2,7 @@
 'use server'
 import { currentUser } from "@clerk/nextjs/server";
 import { db } from "./db";
-import exp from "constants";
+
 
 export const getAuthUserDetails = async () => {
   const user = await currentUser();

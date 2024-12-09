@@ -260,7 +260,7 @@
 import React, { useState, useEffect } from 'react';
 import FileUpload from '../global/file-upload';
 import { CreateUser } from '@/lib/queries';
-import { useRouter } from 'next/navigation';
+
 import { toast } from 'sonner';
 
 

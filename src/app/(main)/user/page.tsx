@@ -33,7 +33,7 @@
 
 
 import BlurPage from '@/components/global/blur-page';
-import Unauthorized from '@/components/unauthorized';
+
 import { getAuthUserDetails } from '@/lib/queries';
 import { redirect } from 'next/navigation';
 import React from 'react';
@@ -42,7 +42,7 @@ export default async function Page() {
   const authUser = await getAuthUserDetails();
 
   if (!authUser) {
-    return redirect('/unauthorized')
+    return redirect('/sign-in')
   }
 
   redirect('/user/dashboard');

@@ -497,7 +497,7 @@
 "use client";
 
 import { UserButton, useUser } from "@clerk/nextjs";
-import { Clipboard, Layout, Menu, SlidersHorizontal, User, X } from "lucide-react";
+import { Clipboard, Layout, LucideIcon, Menu,User, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";

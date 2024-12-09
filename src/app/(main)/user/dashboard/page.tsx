@@ -102,13 +102,7 @@
 
 "use client";
 
-import {
-  CheckCircle,
-  Package,
-  Tag,
-  TrendingDown,
-  TrendingUp,
-} from "lucide-react";
+
 import CardExpenseSummary from "./CardExpenseSummary";
 import CardPopularProducts from "./CardAllUser";
 import BlurPage from "@/components/global/blur-page";

@@ -111,7 +111,7 @@ import { NextResponse } from 'next/server'
 
 export default authMiddleware({
   publicRoutes: ['/','/api/uploadthing'],  // Define public routes that don't require authentication
-  async beforeAuth(auth, req) {},
+  async beforeAuth() {},
   async afterAuth(auth, req) {
     const url = req.nextUrl
     const searchParams = url.searchParams.toString()

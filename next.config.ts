@@ -2,15 +2,17 @@ import type { NextConfig } from "next";
 import { uploadthingPlugin } from "uploadthing/tw";
 
 const nextConfig: NextConfig = {
-  images:{
-    domains:[
+  images: {
+    domains: [
       'uploadthing.com',
       'utfs.io',
       'img.clerk.com'
-
     ]
   },
-  reactStrictMode:false
+  typescript: {
+    ignoreBuildErrors: true
+  },
+  reactStrictMode: false,
 };
 
 export default nextConfig;

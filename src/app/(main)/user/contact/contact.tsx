@@ -5,11 +5,10 @@
 import UserDetails from '@/components/forms/createUser';
 import UpdateDetails from '@/components/forms/updateDeatils';
 import CustomModal from '@/components/global/custom-modeal';
-import { getAllUser, getCurrenUser } from '@/lib/queries';
-import { Copy, Delete, Edit, MoreHorizontal, Mail } from 'lucide-react';
+import { getAllUser } from '@/lib/queries';
+import {  Mail } from 'lucide-react';
 import Image from 'next/image';
 import React, { useEffect, useState, useRef } from 'react';
-import { toast } from 'sonner';
 
 type Role = string[];
 
@@ -26,7 +25,7 @@ type Contact = {
 
 const ContactPage = () => {
   const [users, setUsers] = useState<Contact[]>([]);
-  const [openModalId, setOpenModalId] = useState<string | null>(null);
+  
   const [searchValue, setSearchValue] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
@@ -67,16 +66,7 @@ const ContactPage = () => {
     setSelectedContact(null);
   };
 
-  const handleEditUser = async (contactId: string) => {
-    try {
-      const user = await getCurrenUser(contactId);
-      setSelectedContact(user);
-      setIsModalOpen(true);
-      setOpenModalId(null);
-    } catch (error) {
-      console.error('Error fetching user details:', error);
-    }
-  };
+
 
   const filteredusers = users.filter((contact) =>
     contact.name.toLowerCase().includes(searchValue.toLowerCase())

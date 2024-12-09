@@ -1,0 +1,79 @@
+datasource db {
+  provider = "postgresql"  
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+// model Admin{
+//   id          Int         @id @default(uuid())
+//   name        String
+//   email       String      @unique
+//   createdAt   DateTime    @default(now())
+//   User User[]  @relation(fields: [userid], references: [id])
+//   userid String
+// }
+
+
+
+// model User {
+//   id          Int         @id @default(autoincrement())
+//   name        String
+//   email       String      @unique
+//   phone String?
+//   address String?
+//   city String?
+//   State String?
+//   zipCode String?
+//   country String?
+//   avatarUrl    String?
+//   permission  Permission?  @relation(fields: [permissionId], references: [id])
+//   permissionId Int?
+//   createdAt   DateTime    @default(now())
+//   updatedAt   DateTime    @updatedAt
+// }
+
+// model Permission {
+//   id          Int         @id @default(autoincrement())
+//   name        String     
+//   users       User[]      
+//   createdAt   DateTime    @default(now())
+//   updatedAt   DateTime    @updatedAt
+// }
+
+model Admin {
+  id        Int     @id @default(autoincrement())
+  name      String
+  email     String  @unique
+  createdAt DateTime @default(now())
+  users    User[]  
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  name         String
+  email        String    @unique
+  phone        String?
+  address      String?
+  city         String?
+  state        String?
+  zipCode      String?
+  country      String?
+  avatarUrl    String?
+  adminId      Int     
+  admin        Admin    @relation( fields: [adminId], references: [id])
+  permission    String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+
+
+// model Permission {
+//   id        Int       @id @default(autoincrement())
+//   name      String
+//   users     User[]
+//   createdAt DateTime  @default(now())
+//   updatedAt DateTime  @updatedAt
+// }

@@ -63,7 +63,7 @@ This project is a submission for evaluating creativity, understanding, and techn
 - **Deployment**: Deployed using **Vercel** for global reach and scalability.
 
 ---
-
+live demo:https://fastly.vercel.app/
 ## **📂 Project Structure**
 
 ```plaintext

@@ -21,8 +21,8 @@ const SidebarLink = ({ href, icon: Icon, label }: SidebarLinkProps) => {
   return (
     <Link href={href}>
       <div
-        className={`cursor-pointer flex items-center px-8 py-4 hover:text-blue-500 hover:bg-blue-100 gap-3 transition-colors ${
-          isActive ? "bg-blue-200 text-white" : ""
+        className={`cursor-pointer flex items-center px-8 py-4  hover:bg-blue-400 gap-3 transition-colors ${
+          isActive ? "bg-blue-500 text-white" : ""
         }`}
       >
         <Icon className="w-6 h-6 text-gray-700" />

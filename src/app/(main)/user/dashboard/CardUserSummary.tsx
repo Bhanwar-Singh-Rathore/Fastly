@@ -9,6 +9,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { getAllUser } from "@/lib/queries";
 // Remove or mock the actual query call
 // import { getAllUser } from "@/lib/queries"; 
 
@@ -18,24 +19,18 @@ const CardUserSummary = () => {
   const [timeframe, setTimeframe] = useState("weekly");
 
   useEffect(() => {
-    // Dummy data for testing
-    const dummyData = [
-      { createdAt: "2024-12-01T12:00:00Z", name: "User 1" },
-      { createdAt: "2024-12-03T15:00:00Z", name: "User 2" },
-      { createdAt: "2024-12-05T17:00:00Z", name: "User 3" },
-      { createdAt: "2024-12-06T10:00:00Z", name: "User 4" },
-      { createdAt: "2024-12-08T09:00:00Z", name: "User 5" },
-      { createdAt: "2024-12-08T11:00:00Z", name: "User 6" },
-      { createdAt: "2024-12-07T14:00:00Z", name: "User 7" },
-      { createdAt: "2024-12-01T09:00:00Z", name: "User 8" },
-      // Add more dummy data if needed
-    ];
-    
-    // Simulating an API response delay
-    setTimeout(() => {
-      setUsers(dummyData);
-      setIsLoading(false);
-    }, 1000);  // Delay to simulate async behavior
+    const fetchUsers = async () => {
+      try {
+        const data = await getAllUser(); // assuming getAllUser() is an async function
+        setUsers(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchUsers();
   }, []);
 
   const parseDate = (dateString: string) => {

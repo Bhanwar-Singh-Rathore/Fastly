@@ -36,12 +36,12 @@ const CustomModal: React.FC<ModalProps> = ({ title, subheading, children, isOpen
       </div>
 
       <div
-        className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+        className="fixed inset-0 flex items-center justify-center mt-6 z-50 sm:bg-white md:bg-transparent bg-opacity-50"
         onClick={onClose}
       >
         {/* Modal Content */}
         <div
-          className="relative bg-white rounded-lg shadow-lg w-full max-w-lg p-6 mx-4 sm:mx-6 sm:p-8 sm:max-w-md overflow-hidden"
+          className="relative bg-white rounded-lg shadow-lg sm:w-full md:w-xl max-w-xl p-6 mx-4 sm:mx-6 sm:p-8 sm:max-w-md overflow-hidden"
           onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
         >
           {/* Close Button */}

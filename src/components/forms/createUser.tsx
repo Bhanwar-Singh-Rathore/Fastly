@@ -362,7 +362,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ details ,onSuccess}) => {
               value={formData.name}
               onChange={handleChange}
               placeholder="Your name"
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded-md"
               required
             />
           </div>
@@ -476,12 +476,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ details ,onSuccess}) => {
           </div>
         </div>
 
-        <div>
-          <select name="someOption" className="w-full p-2 border border-gray-300 rounded">
-            <option value="someOption">Some option</option>
-            <option value="otherOption">Other option</option>
-          </select>
-        </div>
+        
 
 
         <div className="flex justify-center">

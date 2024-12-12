@@ -3,7 +3,6 @@
 
 import { UserButton, useUser } from "@clerk/nextjs";
 import { Bell, Moon, Settings, Sun } from "lucide-react";
-import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 const Navbar = () => {

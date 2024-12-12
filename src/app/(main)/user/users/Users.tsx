@@ -5,6 +5,8 @@
 import UserDetails from '@/components/forms/createUser';
 import UpdateDetails from '@/components/forms/updateDeatils';
 import CustomModal from '@/components/global/custom-modeal';
+import NotFound from '@/components/global/notFound';
+import SkeletonPageLoader from '@/components/global/page-loading';
 import { getAllUser, getCurrenUser } from '@/lib/queries';
 import { Copy, Delete, Edit, MoreHorizontal } from 'lucide-react';
 import Image from 'next/image';
@@ -26,6 +28,8 @@ type Contact = {
 const ContactPage = () => {
   const [users, setUsers] = useState<Contact[]>([]);
   const [openModalId, setOpenModalId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [disable,setdisable]=useState(true)
   const [searchValue, setSearchValue] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
@@ -33,9 +37,13 @@ const ContactPage = () => {
 
   // Fetch users
   const fetchUsers = async () => {
+    setIsLoading(true)
+    setdisable(false)
     try {
       const users = await getAllUser();
       setUsers(users);
+      setIsLoading(false)
+      setdisable(true)
     } catch (error) {
       console.error('Error fetching users:', error);
     }
@@ -101,6 +109,9 @@ const ContactPage = () => {
     contact.name.toLowerCase().includes(searchValue.toLowerCase())
   );
 
+  if (!isLoading && users.length === 0) {
+    return <NotFound heading="No Users found" />;
+  }
   return (
     <div className="p-6 min-h-[1100px] bg-white">
       <h1 className="text-4xl mb-6">Users</h1>
@@ -120,7 +131,7 @@ const ContactPage = () => {
         </button>
       </div>
 
-      {isModalOpen && (
+      {isModalOpen && disable && (
         <div
           ref={modalRef}
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
@@ -163,7 +174,14 @@ const ContactPage = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredUsers.map((Details) => (
+{isLoading ?  <tr>
+                <td colSpan={6} className="">
+                  {/* <Loader className="animate-spin text-gray-500 w-6 h-6 mx-auto " /> */}
+                  {/* <p>Loading users...</p> */}
+                <SkeletonPageLoader/>
+                </td>
+              </tr>:
+            filteredUsers.map((Details) => (
               <tr key={Details.id} className="border-b">
                 <td className="p-4">
                   <div className="flex items-center">
@@ -186,7 +204,8 @@ const ContactPage = () => {
                 </td>
                 <td className="p-4 text-right relative">
                   <button
-                    className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-300"
+                  
+                    className={isModalOpen ? 'hidden md:block ' : 'flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-300'}
                     onClick={() => setOpenModalId(openModalId === Details.id ? null : Details.id)}
                   >
                     <MoreHorizontal />
